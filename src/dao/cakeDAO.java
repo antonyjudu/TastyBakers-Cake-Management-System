@@ -15,14 +15,14 @@ public class cakeDAO {
         String query = "INSERT INTO cakes(name, flavor, price, isActive) VALUES(?, ?, ?, ?)";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement p = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, cake.getName());
-            preparedStatement.setString(2, cake.getFlavor());
-            preparedStatement.setDouble(3, cake.getPrice());
-            preparedStatement.setBoolean(4, cake.isActive());
+            p.setString(1, cake.getName());
+            p.setString(2, cake.getFlavor());
+            p.setDouble(3, cake.getPrice());
+            p.setBoolean(4, cake.isActive());
 
-            int rows = preparedStatement.executeUpdate();
+            int rows = p.executeUpdate();
 
             return rows > 0;
 
@@ -39,12 +39,12 @@ public class cakeDAO {
         String query = "UPDATE Cakes SET name = ? WHERE cakeId = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement p = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, newName);
-            preparedStatement.setInt(2, cakeId);
+            p.setString(1, newName);
+            p.setInt(2, cakeId);
 
-            int rows = preparedStatement.executeUpdate();
+            int rows = p.executeUpdate();
 
             return rows > 0;
 
@@ -61,12 +61,12 @@ public class cakeDAO {
         String query = "UPDATE Cakes SET flavor = ? WHERE cakeId = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement p = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, newFlavor);
-            preparedStatement.setInt(2, cakeId);
+            p.setString(1, newFlavor);
+            p.setInt(2, cakeId);
 
-            int rows = preparedStatement.executeUpdate();
+            int rows = p.executeUpdate();
 
             return rows > 0;
 
@@ -83,12 +83,12 @@ public class cakeDAO {
         String query = "UPDATE Cakes SET price = ? WHERE cakeId = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement p = connection.prepareStatement(query)) {
 
-            preparedStatement.setDouble(1, newPrice);
-            preparedStatement.setInt(2, cakeId);
+            p.setDouble(1, newPrice);
+            p.setInt(2, cakeId);
 
-            int rows = preparedStatement.executeUpdate();
+            int rows = p.executeUpdate();
 
             return rows > 0;
 
@@ -105,11 +105,11 @@ public class cakeDAO {
         String query = "SELECT * FROM cakes WHERE cakeId = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement p = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, cakeId);
+            p.setInt(1, cakeId);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = p.executeQuery();
 
             if (resultSet.next()) {
 
@@ -139,8 +139,8 @@ public class cakeDAO {
         String query = "SELECT * FROM cakes";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+             PreparedStatement p = connection.prepareStatement(query);
+             ResultSet resultSet = p.executeQuery()) {
 
             while (resultSet.next()) {
 
@@ -168,11 +168,11 @@ public class cakeDAO {
         String query = "UPDATE cakes SET isActive = false WHERE cakeId = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement p = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, cakeId);
+            p.setInt(1, cakeId);
 
-            int rows = preparedStatement.executeUpdate();
+            int rows = p.executeUpdate();
 
             return rows > 0;
 

@@ -53,11 +53,4 @@ public class cake {
     public void setActive(boolean active) {
         isActive = active;
     }
-
-    // toString Method
-    @Override
-    public String toString() {
-        return "Cake{" + "cakeId=" + cakeId + ", name='" + name + '\'' +", flavor='" + flavor + '\'' + 
-        		", price=" + price + ", isActive=" + isActive + '}';
-    }
 }

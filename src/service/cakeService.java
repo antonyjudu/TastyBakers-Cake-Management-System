@@ -89,42 +89,6 @@ public class cakeService {
         return cakeDAO.updateCakePrice(cakeId, newPrice);
     }
 
-    // Get Cake By ID
-    public cake getCakeById(int cakeId) {
-
-        if (cakeId <= 0) {
-            System.out.println("Invalid cake ID.");
-            return null;
-        }
-
-        return cakeDAO.getCakeById(cakeId);
-    }
-
-    // Display Single Cake
-    public void displayCake(int cakeId) {
-
-        cake cake = getCakeById(cakeId);
-
-        if (cake != null) {
-
-            System.out.println("Cake ID : " + cake.getCakeId());
-            System.out.println("Name    : " + cake.getName());
-            System.out.println("Flavor  : " + cake.getFlavor());
-            System.out.println("Price   : " + cake.getPrice());
-            System.out.println("Active  : " + cake.isActive());
-
-        } else {
-
-            System.out.println("Cake not found.");
-        }
-    }
-
-    // Get All Cakes
-    public List<cake> getAllCakes() {
-
-        return cakeDAO.getAllCakes();
-    }
-
     // Display All Cakes
     public void displayAllCakes() {
 
